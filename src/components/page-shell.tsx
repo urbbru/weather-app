@@ -14,7 +14,7 @@ export function PageShell({ title, description, children }: PageShellProps) {
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">{description}</p>
         </div>
-        <div>{children}</div>
+        {children}
       </div>
     </div>
   );
