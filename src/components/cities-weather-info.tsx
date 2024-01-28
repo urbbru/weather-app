@@ -4,6 +4,8 @@ import Image from "next/image";
 import { DEFAULT_CITIES } from "../../constants";
 import { City } from "../../types";
 import { useWeatherInfo } from "../services";
+import Link from "next/link";
+import { getDynamicCityHref } from "@/utils";
 
 type WeatherInfoProps = { city: City };
 
@@ -14,7 +16,9 @@ export function CitiesWeatherInfo() {
       className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
     >
       {DEFAULT_CITIES.map((city) => (
-        <WeatherInfo key={city.name} city={city} />
+        <Link key={city.name} href={getDynamicCityHref(city.name)}>
+          <WeatherInfo city={city} />
+        </Link>
       ))}
     </ul>
   );
