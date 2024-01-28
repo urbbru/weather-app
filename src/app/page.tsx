@@ -1,5 +1,5 @@
+import { CitiesWeatherInfo, PageShell } from "@/components";
 import { Metadata } from "next";
-import { CitiesWeatherInfo } from "../components";
 
 export const metadata: Metadata = {
   title: "City Weather Information",
@@ -8,5 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <CitiesWeatherInfo />;
+  return (
+    <PageShell
+      title="Cities weather info"
+      description="Click on a city to see more information about the current weather
+        conditions."
+    >
+      <CitiesWeatherInfo />
+    </PageShell>
+  );
 }

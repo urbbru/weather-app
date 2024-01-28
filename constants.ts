@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { City } from "./types";
+import { City, MenuItem } from "./types";
 
 export const DEFAULT_CITIES: City[] = [
   {
@@ -15,3 +15,8 @@ export const DEFAULT_CITIES: City[] = [
 ];
 
 export const QUERY_CLIENT = new QueryClient();
+
+export const MENU_ITEMS: MenuItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Search", href: "/search" },
+];

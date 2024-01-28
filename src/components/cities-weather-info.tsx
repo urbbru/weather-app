@@ -2,34 +2,21 @@
 
 import Image from "next/image";
 import { DEFAULT_CITIES } from "../../constants";
-import { useWeatherInfo } from "../services";
 import { City } from "../../types";
+import { useWeatherInfo } from "../services";
 
 type WeatherInfoProps = { city: City };
 
 export function CitiesWeatherInfo() {
   return (
-    <div className="bg-white py-8 sm:py-16">
-      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-4 sm:px-0 xl:grid-cols-3">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Cities weather info
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Click on a city to see more information about the current weather
-            conditions.
-          </p>
-        </div>
-        <ul
-          role="list"
-          className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
-        >
-          {DEFAULT_CITIES.map((city) => (
-            <WeatherInfo key={city.name} city={city} />
-          ))}
-        </ul>
-      </div>
-    </div>
+    <ul
+      role="list"
+      className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
+    >
+      {DEFAULT_CITIES.map((city) => (
+        <WeatherInfo key={city.name} city={city} />
+      ))}
+    </ul>
   );
 }
 

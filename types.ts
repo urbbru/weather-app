@@ -24,3 +24,5 @@ export type OpenWeatherMapResponse = {
     grnd_level: number;
   };
 };
+
+export type MenuItem = { label: string; href: string };

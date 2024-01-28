@@ -1,9 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { MENU_ITEMS } from "../../constants";
+import Link from "next/link";
 
 function Navigation() {
   const [transitionClass, setTransitionClass] = useState("max-h-0");
+  const menuItemsRender = useMemo(
+    () =>
+      MENU_ITEMS.map((menuItem) => (
+        <Link
+          href={menuItem.href}
+          onClick={() => setTransitionClass("max-h-0")}
+          key={menuItem.href}
+          className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+          aria-current="page"
+        >
+          {menuItem.label}
+        </Link>
+      )),
+    []
+  );
 
   const toggleMenu = () =>
     setTransitionClass((transitionClass) =>
@@ -17,13 +34,7 @@ function Navigation() {
           <div className="flex items-center">
             <div className="hidden md:block">
               <div className="flex items-baseline space-x-4">
-                <a
-                  href="#"
-                  className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                  aria-current="page"
-                >
-                  Home
-                </a>
+                {menuItemsRender}
               </div>
             </div>
           </div>
@@ -72,14 +83,8 @@ function Navigation() {
         className={`transition-all overflow-hidden ${transitionClass}`}
         id="mobile-menu"
       >
-        <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <a
-            href="#"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-            aria-current="page"
-          >
-            Home
-          </a>
+        <div className="flex flex-col space-y-2 px-2 pb-3 pt-2 sm:px-3">
+          {menuItemsRender}
         </div>
       </div>
     </nav>
