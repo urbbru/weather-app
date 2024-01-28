@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { OpenWeatherMapResponse } from "../../types";
 import axios from "axios";
 
-async function fetchWeatherInfo(city: string) {
-  const { data } = await axios.get(
+export async function fetchWeatherInfo(city: string) {
+  const { data } = await axios.get<OpenWeatherMapResponse>(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_MAPS_API_KEY}`
   );
 
