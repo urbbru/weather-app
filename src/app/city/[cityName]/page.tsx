@@ -1,4 +1,3 @@
-import { PageShell } from "@/components";
 import { CityWeatherDetails } from "@/components";
 import { capitalizeAllWords } from "@/utils";
 import { Metadata } from "next";
