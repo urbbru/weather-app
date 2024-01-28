@@ -4,6 +4,7 @@ import { useWeatherInfo } from "@/services";
 import { ChangeEvent, useState } from "react";
 import { CitySearchResult } from "./city-search-result";
 import { Spinner } from "./spinner";
+import { AxiosError } from "axios";
 
 export function CitySearcher() {
   const [city, setCity] = useState("");
@@ -88,8 +89,10 @@ export function CitySearcher() {
           </div>
           {error && (
             <p className="text-red-600">
-              {/* TODO: fix */}
-              {(error as any).response?.data?.message}
+              {
+                (error as AxiosError<{ message: string }>).response?.data
+                  ?.message
+              }
             </p>
           )}
         </div>
