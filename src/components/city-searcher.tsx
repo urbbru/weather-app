@@ -3,16 +3,17 @@
 import { useWeatherInfo } from "@/services";
 import { ChangeEvent, useState } from "react";
 import { CitySearchResult } from "./city-search-result";
+import { Spinner } from "./spinner";
 
 export function CitySearcher() {
   const [city, setCity] = useState("");
   const [citySearch, setCitySearch] = useState("");
   const {
-    isPending,
+    isLoading,
     error,
     data: cityWeatherResult,
   } = useWeatherInfo(citySearch);
-  const searchInputIsDsabled = Boolean(!isPending);
+  const searchInputIsDsabled = Boolean(isLoading);
   const searchButtonIsDisabled = Boolean(!city);
   const clearButtonIsDsabled = Boolean(!citySearch);
 
@@ -28,21 +29,12 @@ export function CitySearcher() {
   };
 
   const clearCity = () => {
-    if (city) {
-      setCity("");
-
-      clearCitySearch();
-    }
-  };
-
-  const clearCitySearch = () => {
-    if (citySearch) {
-      setCitySearch("");
-    }
+    setCity("");
+    setCitySearch("");
   };
 
   return (
-    <>
+    <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label
@@ -64,6 +56,14 @@ export function CitySearcher() {
                 error ? " ring-red-600" : ""
               }`}
             />
+            {isLoading && (
+              <div
+                className="absolute inset-y-0 right-1 flex items-center cursor-pointer"
+                onClick={clearCity}
+              >
+                <Spinner />
+              </div>
+            )}
             {city && (
               <div
                 className="absolute inset-y-0 right-1 flex items-center cursor-pointer"
@@ -104,7 +104,7 @@ export function CitySearcher() {
         </button>
         {cityWeatherResult && (
           <button
-            onClick={clearCitySearch}
+            onClick={clearCity}
             disabled={clearButtonIsDsabled}
             className="text-sm font-semibold leading-6 text-gray-900"
           >
@@ -115,6 +115,6 @@ export function CitySearcher() {
       {cityWeatherResult && (
         <CitySearchResult cityWeather={cityWeatherResult} />
       )}
-    </>
+    </div>
   );
 }
