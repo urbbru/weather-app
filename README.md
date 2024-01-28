@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, install dependencies:
+### 1. First, install dependencies:
 
 ```bash
 npm install
@@ -10,9 +10,7 @@ npm install
 yarn install
 ```
 
-## OpenWeatherMap API key
-
-Sign up at OpenWeatherMap and retrieve a API key:
+### 2. Sign up at OpenWeatherMap and retrieve a API key:
 
 - Sign up at OpenWeatherMap and retrieve a API key
 - Create `.env.local file`
@@ -24,7 +22,7 @@ Example:
 NEXT_PUBLIC_OPENWEATHER_MAPS_API_KEY=f2i32io902ff23r32r32
 ```
 
-## Run the development server
+### 3. Run the development server
 
 To run the development server locally:
 
