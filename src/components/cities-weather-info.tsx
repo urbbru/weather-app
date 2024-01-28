@@ -5,7 +5,7 @@ import { DEFAULT_CITIES } from "../../constants";
 import { City } from "../../types";
 import { useWeatherInfo } from "../services";
 import Link from "next/link";
-import { getDynamicCityHref } from "@/utils";
+import { capitalizeAllWords, getDynamicCityHref } from "@/utils";
 
 type WeatherInfoProps = { city: City };
 
@@ -77,7 +77,7 @@ function WeatherInfo(props: WeatherInfoProps) {
             Temperature: {data.main.temp.toFixed(1)} °C
           </p>
           <p className="text-sm font-semibold leading-6 text-indigo-600">
-            Feels like: {data.main.feels_like.toFixed(1)} °C
+            Currently: {capitalizeAllWords(data.weather[0].description)}
           </p>
           <p className="text-sm font-semibold leading-6 text-indigo-600">
             Humidity: {data.main.humidity}
