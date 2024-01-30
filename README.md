@@ -10,10 +10,10 @@ npm install
 yarn install
 ```
 
-### 2. Sign up at OpenWeatherMap and retrieve a API key:
+### 2. Get a OpenWeatherMap API key:
 
-- Sign up at OpenWeatherMap and retrieve a API key
-- Create `.env.local file`
+- Sign up at OpenWeatherMap and copy the free API key
+- Create a `.env.local` file in the root of the project
 - Add your API key to the `NEXT_PUBLIC_OPENWEATHER_MAPS_API_KEY` variable
 
 Example:
